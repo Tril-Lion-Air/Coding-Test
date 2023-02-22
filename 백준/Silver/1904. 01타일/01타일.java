@@ -9,16 +9,15 @@ public class Main {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		int n = Integer.parseInt(br.readLine().trim());
 				
-		int[] fibonacci = new int[1000001];
-		fibonacci[1] = 1; //0 안씀.
-		fibonacci[2] = 2;
-		
+		int [] dp = new int[n+2];
+		dp[1] = 1; //0 안씀.
+		dp[2] = 2;
 		
 		for(int i=3; i<=n; i++) {
-			fibonacci[i] = (fibonacci[i-2]+fibonacci[i-1])%15746;
+			dp[i] = (dp[i-2]+dp[i-1])%15746;
 		}
 		
-		System.out.println(fibonacci[n]%15746);
+		System.out.println(dp[n]%15746);
 		
 		
 	}
