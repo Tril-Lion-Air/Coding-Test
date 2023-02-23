@@ -5,7 +5,6 @@ public class Main {
 	
 	static int n,m;
 	static int[] sequence;
-	static boolean[] isUsed;
 	static int[] numbers;
 	static StringBuilder sb = new StringBuilder();
 	
@@ -18,12 +17,8 @@ public class Main {
 			return;
 		}
 		for(int i=k; i<n; i++) {
-			if(!isUsed[i]) {
-				isUsed[i]=true;
-				sequence[depth] = numbers[i];
-				bt(depth+1, i);
-				isUsed[i]=false;
-			}
+			sequence[depth] = numbers[i];
+			bt(depth+1, i+1);
 		}
 	}
 	
@@ -34,7 +29,6 @@ public class Main {
 		n = Integer.parseInt(st.nextToken());
 		m = Integer.parseInt(st.nextToken());
 		sequence = new int[m];
-		isUsed = new boolean[n];
 		numbers = Arrays.stream(br.readLine().trim().split(" "))
 				.map(s -> Integer.parseInt(s))
 				.mapToInt(i->i)
